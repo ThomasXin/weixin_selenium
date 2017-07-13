@@ -9,11 +9,11 @@ driver.get('https://mp.weixin.qq.com/')
 #  获取到用户名输入框并设置为焦点
 driver.find_element_by_xpath('//*[@id="account"]').clear()
 #  在用户名输入框输入账号
-driver.find_element_by_xpath('//*[@id="account"]').send_keys('username')
+driver.find_element_by_xpath('//*[@id="account"]').send_keys('xxxx@163.com')
 time.sleep(2)
 # 以下两条同上
 driver.find_element_by_xpath('//*[@id="pwd"]').clear()
-driver.find_element_by_xpath('//*[@id="pwd"]').send_keys('password')
+driver.find_element_by_xpath('//*[@id="pwd"]').send_keys('xxxxaaaadddd')
 time.sleep(2)
 #  选择记住账号
 driver.find_element_by_xpath('//*[@id="loginForm"]/div[3]/label').click()
