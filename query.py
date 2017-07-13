@@ -30,7 +30,7 @@ def reason_keyword():
     if query(strs):
         print('就这些了！！！客官不要生气')
     else:
-        print('抱歉客官，您的需求我们目前没有的啦，正在给您找！')
+        print('抱歉客官，您的需求我们目前没有的啦！')
 if __name__ == '__main__':
     input_ = raw_input("请选择要查找的方式：Enter是默认，0是有范围的查询")
     if input_<>'0':
