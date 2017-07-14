@@ -60,11 +60,23 @@ def get_achieve(query, md5):
         time.sleep(5)
 
 if __name__ == '__main__':
+
     query = str.lower(raw_input("请输入要查找的内容：\n"))
     # 这里的MD5主要是作为两个表的标记
     m1 = hashlib.md5()
     m1.update(query)
     md5 = m1.hexdigest()
     # 这里要以MD5弄一个去重，如果MD5相等就不保存(不知道各大搜索引擎是如何去重的，好好思考一下)
-    keyword.insert_one({'keyword': query, 'md5_sign': md5})
-    get_achieve(query, md5)
+    s = set()  # 根据set的特性我们进行去重
+    for items in keyword.find({}, {'md5_sign':1}):
+        s.add(items['md5_sign'])
+    # 这个是数据库中已存在的md5的数量
+    db_uum = len(s)
+    # 添加
+    s.add(md5)
+    # 添加之后的数量
+    add_num = len(s)
+
+    if add_num > db_uum:
+        keyword.insert_one({'keyword': query, 'md5_sign': md5})
+        get_achieve(query, md5)
