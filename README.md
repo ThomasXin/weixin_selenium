@@ -5,6 +5,7 @@
 * query.py 根据关键词进行查找。知道了article库中有什么类型数据  
 * delete.py 根据关键词进行删除  
 * db.py 是与数据库相关的
+* 新增run.py使其中的方法不在weixin.py中运行
 * 小爬虫用到的库的版本及系统
 	0.win764位
 	1.Python 2.7.13
