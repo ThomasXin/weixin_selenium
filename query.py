@@ -4,8 +4,6 @@ import Queue
 from run import take_md5
 from db import arcitle, keyword
 
-
-
 def query(strs):
     #  根据我们输入的关键词进行查找，必须匹配，待解决的问题就是要实现模糊查询
     for i in keyword.find({'keyword': '%s' % strs}):
@@ -21,7 +19,6 @@ def reason_keyword():
     if query(strs):
         print('就这些了！！！客官不要生气')
     else:
-        print('抱歉客官，您的需求我们目前没有的啦！')
         q = Queue.Queue()
         q.put(strs)
         while not q.empty():
