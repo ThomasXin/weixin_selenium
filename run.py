@@ -4,8 +4,7 @@ from db import keyword, arcitle
 from weixin import get_achieve
 
 def take_md5(query):
-    # query = str.lower(raw_input("请输入要查找的内容：\n"))
-    # 这里的MD5主要是作为两个表的标记
+    # 这里的MD5主要是作为两个表中相对应的标记
     get_md5 = hashlib.md5()
     get_md5.update(query)
     md5 = get_md5.hexdigest()
@@ -20,16 +19,17 @@ def take_md5(query):
     # 添加之后的数量
     add_num = len(s)
     # 如果数量增加了表明与原来的MD5值不相等，我们再进行保存
-    pro_num = 0
-    aft_num = 0
     if add_num > db_uum:
         # 保存关键字
         keyword.insert_one({'keyword': query, 'md5_sign': md5})
         # 调用weixin.py里的方法
-        for items in arcitle.find():
-            pro_num +=1
         get_achieve(query, md5)
-        for items in arcitle.find():
-            aft_num += 1
-    if aft_num == pro_num:
-        keyword.remove({'keyword': '%s' % query})
+        # for items in arcitle.find({'md5_sign':'%s'% md5}):
+        #     print(items)
+        num = 0
+        for items in arcitle.find({'md5_sign': '%s' % md5}):
+            num += 1
+        if num < 1:
+            keyword.remove({'md5_sign': '%s' % md5})
+
+
