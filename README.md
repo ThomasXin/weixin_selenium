@@ -1,4 +1,5 @@
 ﻿# weixin_selenium
+* 这个分支为md5去重版本！！！！！
 * 此小爬虫是爬取微信公众号内的素材管理/新建分享图文中的文章。
 * login.py 是你第一次登录微信公众号时需要用到的，目的是为了拿到cookies.txt里的cookies。
 * weixin.py就是我们要做的内容，
